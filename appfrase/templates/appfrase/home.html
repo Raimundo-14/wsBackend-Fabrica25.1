@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Frases e Conselhos</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <!-- Conselho Aleatório -->
+      <h1 class="mb-4">Conselho Aleatório</h1>
+      <p class="alert alert-info">{{ advice }}</p>
+      <form method="get" class="mb-4">
+        <button type="submit" class="btn btn-secondary">
+          Gerar Conselho Aleatório
+        </button>
+      </form>
+
+      <!-- Formulário para Salvar Conselho -->
+      <h2 class="mt-5">Salvar Conselho</h2>
+      <form method="post" class="mb-4">
+        {% csrf_token %}
+        <input type="hidden" name="texto" value="{{ advice }}" />
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
+
+      
+      <!-- Lista de Frases Cadastradas -->
+      <h2>Frases Cadastradas</h2>
+      <ul class="list-group">
+        {% for frase in frases %}
+        <li class="list-group-item">
+          <blockquote class="blockquote">
+            <p class="mb-0">"{{ frase.texto }}"</p>
+            
+            
+          </blockquote>
+          <div class="d-flex justify-content-end">
+            <!-- Botão Editar -->
+            <a
+              href="{% url 'editar_frase' frase.pk %}"
+              class="btn btn-warning btn-sm mr-2"
+              >Editar</a
+            >
+            <!-- Botão Excluir -->
+            <form
+              method="post"
+              action="{% url 'deletar_frase' frase.pk %}"
+              class="d-inline"
+            >
+              {% csrf_token %}
+              <button
+                type="submit"
+                class="btn btn-danger btn-sm"
+                onclick="return confirm('Tem certeza que deseja excluir esta frase?')"
+              >
+                Excluir
+              </button>
+            </form>
+          </div>
+        </li>
+        {% empty %}
+        <li class="list-group-item">Nenhuma frase cadastrada.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

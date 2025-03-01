@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listar Frases</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Frases e Conselhos</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'listar_frases' %}"
+              >Listar Frases</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <h1 class="mb-4">Frases Cadastradas</h1>
+      <ul class="list-group">
+        {% for frase in frases %}
+        <li class="list-group-item">
+          <blockquote class="blockquote">
+            <p class="mb-0">"{{ frase.texto }}"</p>            
+          </blockquote>
+          <div class="d-flex justify-content-end">
+            <a
+              href="{% url 'editar_frase' frase.pk %}"
+              class="btn btn-warning btn-sm mr-2"
+              >Editar</a
+            >
+            <form
+              method="post"
+              action="{% url 'deletar_frase' frase.pk %}"
+              class="d-inline"
+            >
+              {% csrf_token %}
+              <button
+                type="submit"
+                class="btn btn-danger btn-sm"
+                onclick="return confirm('Tem certeza que deseja excluir esta frase?')"
+              >
+                Excluir
+              </button>
+            </form>
+          </div>
+        </li>
+        {% empty %}
+        <li class="list-group-item">Nenhuma frase cadastrada.</li>
+        {% endfor %}
+      </ul>
+   
+    </div>
+  </body>
+</html>
