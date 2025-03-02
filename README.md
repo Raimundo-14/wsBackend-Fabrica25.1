@@ -13,7 +13,7 @@ Este é um projeto Django para gerenciar frases e conselhos.
 1. Clone o repositório:
 
     ```sh
-    git clone <https://github.com/Raimundo-14/wsBackend-Fabrica25.1.git>
+    git clone https://github.com/Raimundo-14/wsBackend-Fabrica25.1.git
     cd wsBackend-Fabrica25.1
     ```
 
