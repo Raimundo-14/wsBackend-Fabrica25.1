@@ -29,7 +29,7 @@
         {% for frase in frases %}
         <li class="list-group-item">
           <blockquote class="blockquote">
-            <p class="mb-0">"{{ frase.texto }}"</p>            
+            <p class="mb-0">"{{ frase.texto }}"</p>
           </blockquote>
           <div class="d-flex justify-content-end">
             <a
@@ -57,7 +57,9 @@
         <li class="list-group-item">Nenhuma frase cadastrada.</li>
         {% endfor %}
       </ul>
-   
+      <a href="{% url 'home' %}" class="btn btn-secondary mt-3"
+        >Voltar para Home</a
+      >
     </div>
   </body>
 </html>
