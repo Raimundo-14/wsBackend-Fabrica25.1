@@ -33,7 +33,8 @@ Este é um projeto Django para gerenciar frases e conselhos.
 4. Execute as migrações do banco de dados:
 
     ```sh
-    python manage.py migrate    ```
+    python manage.py migrate    
+    ```
 
 ## Uso
 
