@@ -83,7 +83,3 @@ Este é um projeto Django para gerenciar frases e conselhos.
 3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`).
 4. Faça push para a branch (`git push origin feature/nova-feature`).
 5. Abra um Pull Request.
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT.
